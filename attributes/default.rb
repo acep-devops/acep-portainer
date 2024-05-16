@@ -1,0 +1,1 @@
+default['docker']['data_mount_point'] = '/var/lib/docker'

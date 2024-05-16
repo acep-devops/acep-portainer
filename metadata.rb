@@ -1,7 +1,7 @@
 name 'acep-portainer'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'All Rights Reserved'
+maintainer 'Will Fisher'
+maintainer_email 'will@alaska.edu'
+license 'Apache-2.0'
 description 'Installs/Configures acep-portainer'
 version '0.1.0'
 chef_version '>= 16.0'
@@ -17,3 +17,5 @@ chef_version '>= 16.0'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/acep-portainer'
+
+depends 'docker'

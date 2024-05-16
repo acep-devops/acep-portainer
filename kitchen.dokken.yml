@@ -1,0 +1,31 @@
+---
+driver:
+  name: dokken
+  privileged: true
+  pid_one_command: /bin/systemd
+
+provisioner:
+  name: dokken
+
+transport:
+  name: dokken
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: ubuntu-22.04
+    driver:
+      image: dokken/ubuntu-22.04
+      ports:
+        - 8000:8000
+        - 8080:8080
+        - 8443:8443
+        - 3022:3022
+        - 9443:9443
+  - name: ubuntu-24.04
+    driver:
+      image: dokken/ubuntu-24.04
+      ports:
+        - 8001:8000
+        - 9444:9443

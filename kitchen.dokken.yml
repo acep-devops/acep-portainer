@@ -6,6 +6,7 @@ driver:
 
 provisioner:
   name: dokken
+  clean_dokken_sandbox: false
 
 transport:
   name: dokken
@@ -17,15 +18,17 @@ platforms:
   - name: ubuntu-22.04
     driver:
       image: dokken/ubuntu-22.04
+
+suites:
+  - name: default
+    driver:
       ports:
         - 8000:8000
-        - 8080:8080
-        - 8443:8443
-        - 3022:3022
         - 9443:9443
-  - name: ubuntu-24.04
+  - name: agent
     driver:
-      image: dokken/ubuntu-24.04
       ports:
-        - 8001:8000
-        - 9444:9443
+        - 9001:9001
+    attributes:
+      portainer:
+        role: agent

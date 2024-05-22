@@ -22,10 +22,21 @@ verifier:
 
 platforms:
   - name: ubuntu-22.04
-  - name: ubuntu-24.04
 
 suites:
   - name: default
     verifier:
       inspec_tests:
         - test/integration/default
+        - test/integration/server
+    attributes:
+      portainer:
+        role: server
+  - name: agent
+    verifier:
+      inspec_tests:
+        - test/integration/default
+        - test/integration/agent
+    attributes:
+      portainer:
+        role: agent

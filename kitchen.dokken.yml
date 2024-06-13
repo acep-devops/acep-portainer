@@ -29,6 +29,3 @@ suites:
     driver:
       ports:
         - 9001:9001
-    attributes:
-      portainer:
-        role: agent

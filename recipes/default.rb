@@ -11,6 +11,10 @@ docker_service 'default' do
   action [:create, :start]
 end
 
+docker_volume 'portainer_data' do
+    action :create
+end
+
 # internal recipe will handle running the correct items based on the role.
 include_recipe 'acep-portainer::server'
 include_recipe 'acep-portainer::agent'

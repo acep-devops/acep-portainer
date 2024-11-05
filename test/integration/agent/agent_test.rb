@@ -2,7 +2,7 @@
 
 # The Chef InSpec reference, with examples and extensive documentation, can be
 # found at https://docs.chef.io/inspec/resources/
-control 'agent' do 
+control 'agent' do
   title 'Agent Test'
   desc 'Test the agent recipe'
 
@@ -11,5 +11,5 @@ control 'agent' do
     it { should be_running }
     its('repo') { should eq 'portainer/agent' }
     its('tag') { should eq '2.21.4' }
-  end 
+  end
 end

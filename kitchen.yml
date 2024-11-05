@@ -40,5 +40,14 @@ suites:
     attributes:
       portainer:
         role: agent
+  - name: edge
+    verifier:
+      inspec_tests:
+        - test/integration/default
+        - test/integration/agent
+    attributes:
+      portainer:
+        role: agent
+        enable_edge: true
         edge_id: 70f4190a-b4e3-42e1-b32a-925b806e78c5
         edge_key: aHR0cHM6Ly8xNzIuMjguMTcuMTU0Ojk0NDN8MTcyLjI4LjE3LjE1NDo4MDAwfFBqZTB4M2F6a2NaaytKeXRPRjhVU2hxMWxmdHdjTmVIN1JIZzZwNkNrckE9fDU

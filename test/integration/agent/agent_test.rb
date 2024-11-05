@@ -10,6 +10,6 @@ control 'agent' do
     it { should exist }
     it { should be_running }
     its('repo') { should eq 'portainer/agent' }
-    its('tag') { should eq '2.20.0' }
+    its('tag') { should eq '2.21.4' }
   end 
 end

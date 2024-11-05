@@ -11,6 +11,6 @@ control 'server' do
     it { should exist }
     it { should be_running }
     its('repo') { should eq 'portainer/portainer-ce' }
-    its('tag') { should eq 'latest' }
+    its('tag') { should eq '2.21.4' }
   end
 end 

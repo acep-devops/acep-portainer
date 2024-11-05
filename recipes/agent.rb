@@ -5,7 +5,7 @@
 # Copyright:: 2024, The Authors, All Rights Reserved.
 
 docker_image 'portainer-agent' do 
-    tag 'latest'
+    tag node['portainer']['version']
     repo 'portainer/agent'
     action :pull
     only_if { node['portainer']['role'] == 'agent' }
@@ -24,9 +24,9 @@ end
 #   --name portainer_edge_agent \
 #   portainer/agent:2.19.5
 
-docker_container 'portainer_edge_agent' do
+docker_container 'portainer_agent' do
     repo 'portainer/agent'
-    tag 'latest'
+    tag node['portainer']['version']
     port ['9001:9001']
     volumes [
         '/var/lib/docker/volumes:/var/lib/docker/volumes',
@@ -34,10 +34,10 @@ docker_container 'portainer_edge_agent' do
         'portainer_data:/data',
     ]
     env [
-        "EDGE=1", 
+        "EDGE=#{node['portainer']['enable_edge'] ? 1 : 0}",
         "EDGE_ID=#{node['portainer']['edge_id']}",
-        "EDGE_KEY=#{node['portainer']['edge_key']}", 
-        "EDGE_INSECURE_POLL=1"
+        "EDGE_KEY=#{node['portainer']['edge_key']}",
+        "EDGE_INSECURE_POLL=1",
     ]
     restart_policy 'always'
     action :run

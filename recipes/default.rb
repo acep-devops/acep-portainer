@@ -12,7 +12,7 @@ docker_service 'default' do
 end
 
 docker_volume 'portainer_data' do
-    action :create
+  action :create
 end
 
 # internal recipe will handle running the correct items based on the role.

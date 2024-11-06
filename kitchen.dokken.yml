@@ -18,6 +18,9 @@ platforms:
   - name: ubuntu-22.04
     driver:
       image: dokken/ubuntu-22.04
+  - name: ubuntu-24.04
+    driver:
+      image: dokken/ubuntu-24.04
 
 suites:
   - name: default
@@ -25,7 +28,20 @@ suites:
       ports:
         - 8000:8000
         - 9443:9443
+    attributes:
+      portainer:
+        role: server
   - name: agent
     driver:
       ports:
         - 9001:9001
+    attributes:
+      portainer:
+        role: agent
+  - name: edge
+    attributes:
+      portainer:
+        role: agent
+        enable_edge: true
+        edge_id: 627208cf-5d38-472c-98fe-f6efd48acec3
+        edge_key: aHR0cHM6Ly8xMC4xMC4wLjEwNDo5NDQzfDEwLjEwLjAuMTA0OjgwMDB8WE5WU1B4dDdSN3NrRmdIcTlCRmhacWt3KzhCNEQybW1nQ3d1UndNMTV1dz18NA

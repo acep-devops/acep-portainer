@@ -6,13 +6,13 @@
 
 docker_image 'portainer' do
   tag node['portainer']['version']
-  repo 'portainer/portainer-ce'
+  repo node['portainer']['repo']
   action :pull
   only_if { node['portainer']['role'] == 'server' }
 end
 
 docker_container 'portainer' do
-  repo 'portainer/portainer-ce'
+  repo node['portainer']['repo']
   tag node['portainer']['version']
   port ['8000:8000', '9443:9443']
   volumes [

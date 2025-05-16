@@ -50,8 +50,15 @@ To use this cookbook you will need to include the default recipe and modify any 
     ```ruby
     default['docker']['data_mount_point'] = '/var/lib/docker'
     default['portainer']['role'] = 'server' 
+    default['portainer']['repo'] = 'portainer/portainer-ce' 
     #default['portainer']['role'] = 'agent' 
     default['portainer']['version'] = '2.21.4'
+    ```
+
+    If you're running the business edition of portainer you will need to update the repo as well
+
+    ```ruby
+    default['portainer']['repo'] = 'portainer/portainer-ee'
     ```
 
 1. Converge the node

@@ -28,9 +28,6 @@ suites:
       ports:
         - 8000:8000
         - 9443:9443
-    attributes:
-      portainer:
-        role: server
   - name: agent
     driver:
       ports:

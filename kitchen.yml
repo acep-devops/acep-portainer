@@ -1,6 +1,6 @@
 ---
 driver:
-  name: vagrant
+    name: vagrant
 
 ## The forwarded_port port feature lets you connect to ports on the VM guest
 ## via localhost on the host.
@@ -10,45 +10,44 @@ driver:
 #    - ["forwarded_port", {guest: 80, host: 8080}]
 
 provisioner:
-  name: chef_zero
+    name: chef_zero
 
-  ## product_name and product_version specifies a specific Chef product and version to install.
-  ## see the Chef documentation for more details: https://docs.chef.io/workstation/config_yml_kitchen/
-  #  product_name: chef
-  #  product_version: 17
+    ## product_name and product_version specifies a specific Chef product and version to install.
+    ## see the Chef documentation for more details: https://docs.chef.io/workstation/config_yml_kitchen/
+    #  product_name: chef
+    #  product_version: 17
 
 verifier:
-  name: inspec
+    name: inspec
 
 platforms:
-  - name: ubuntu-22.04
-  - name: ubuntu-24.04
+    - name: ubuntu-24.04
 
 suites:
-  - name: default
-    verifier:
-      inspec_tests:
-        - test/integration/default
-        - test/integration/server
-    attributes:
-      portainer:
-        role: server
-  - name: agent
-    verifier:
-      inspec_tests:
-        - test/integration/default
-        - test/integration/agent
-    attributes:
-      portainer:
-        role: agent
-  - name: edge
-    verifier:
-      inspec_tests:
-        - test/integration/default
-        - test/integration/agent
-    attributes:
-      portainer:
-        role: agent
-        enable_edge: true
-        edge_id: 70f4190a-b4e3-42e1-b32a-925b806e78c5
-        edge_key: aHR0cHM6Ly8xNzIuMjguMTcuMTU0Ojk0NDN8MTcyLjI4LjE3LjE1NDo4MDAwfFBqZTB4M2F6a2NaaytKeXRPRjhVU2hxMWxmdHdjTmVIN1JIZzZwNkNrckE9fDU
+    - name: default
+      verifier:
+          inspec_tests:
+              - test/integration/default
+              - test/integration/server
+      attributes:
+          portainer:
+              role: server
+    - name: agent
+      verifier:
+          inspec_tests:
+              - test/integration/default
+              - test/integration/agent
+      attributes:
+          portainer:
+              role: agent
+    - name: edge
+      verifier:
+          inspec_tests:
+              - test/integration/default
+              - test/integration/agent
+      attributes:
+          portainer:
+              role: agent
+              enable_edge: true
+              edge_id: 70f4190a-b4e3-42e1-b32a-925b806e78c5
+              edge_key: aHR0cHM6Ly8xNzIuMjguMTcuMTU0Ojk0NDN8MTcyLjI4LjE3LjE1NDo4MDAwfFBqZTB4M2F6a2NaaytKeXRPRjhVU2hxMWxmdHdjTmVIN1JIZzZwNkNrckE9fDU

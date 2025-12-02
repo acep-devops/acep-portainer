@@ -1,44 +1,43 @@
 ---
 name: ci
 on:
-  pull_request:
-  push:
-    branches:
-      - main
+    pull_request:
+    push:
+        branches:
+            - main
 
 jobs:
-  lint-unit:
-    uses: acep-devops/cookbook-ci/.github/workflows/lint-unit.yml@main
-    permissions:
-      actions: write
-      checks: write
-      pull-requests: write
-      statuses: write
-      issues: write
-      contents: read
-      id-token: write
+    lint-unit:
+        uses: acep-devops/cookbook-ci/.github/workflows/lint-unit.yml@main
+        permissions:
+            actions: write
+            checks: write
+            pull-requests: write
+            statuses: write
+            issues: write
+            contents: read
+            id-token: write
 
-  integration:
-    runs-on: ubuntu-latest
-    needs: [lint-unit]
-    strategy:
-      matrix:
-        os:
-          - ubuntu-2204
-          - ubuntu-2404
-        suite:
-          - "default"
-      fail-fast: false
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-      - name: Install Chef
-        uses: actionshub/chef-install@3.0.0
-      - name: Test-Kitchen
-        uses: actionshub/test-kitchen@main
-        with:
-          suite: ${{ matrix.suite }}
-          os: ${{ matrix.os }}
-        env:
-          CHEF_LICENSE: accept-no-persist
-          KITCHEN_LOCAL_YAML: kitchen.dokken.yml
+    integration:
+        runs-on: ubuntu-latest
+        needs: [lint-unit]
+        strategy:
+            matrix:
+                os:
+                    - ubuntu-2404
+                suite:
+                    - "default"
+            fail-fast: false
+        steps:
+            - name: Check out code
+              uses: actions/checkout@v4
+            - name: Install Chef
+              uses: actionshub/chef-install@3.0.0
+            - name: Test-Kitchen
+              uses: actionshub/test-kitchen@main
+              with:
+                  suite: ${{ matrix.suite }}
+                  os: ${{ matrix.os }}
+              env:
+                  CHEF_LICENSE: accept-no-persist
+                  KITCHEN_LOCAL_YAML: kitchen.dokken.yml

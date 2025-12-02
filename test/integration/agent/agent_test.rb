@@ -6,7 +6,7 @@ control 'agent' do
   title 'Agent Test'
   desc 'Test the agent recipe'
 
-  describe docker_container('portainer-agent') do
+  describe docker_container('portainer_agent') do
     it { should exist }
     it { should be_running }
     its('repo') { should eq 'portainer/agent' }

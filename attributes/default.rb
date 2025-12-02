@@ -1,4 +1,6 @@
 default['docker']['data_mount_point'] = '/var/lib/docker'
+# default['docker']['storage_driver'] = 'overlayfs'
+
 default['portainer']['role'] = 'server' # optionally could use 'agent' for a follower agent.
 default['portainer']['repo'] = 'portainer/portainer-ce' # default to community edition
 # default['portainer']['repo'] = 'portainer/portainer-ee' # use this for enterprise edition
